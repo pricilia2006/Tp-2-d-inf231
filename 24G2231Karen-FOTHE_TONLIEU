@@ -1,0 +1,83 @@
+
+```markdown
+Fiche Étudiant - TP INF231
+
+Informations Personnelles
+
+- Matricule : 24G2231 
+- Nom :  FOTHE TONLIEU
+- Prénom :  KAREN 
+- Niveau : Licence 2 Informatique  
+- Cours : INF231 - Structures de Données II  
+- Enseignant : Professor Metatagia  
+
+Ma Contribution au Projet
+
+Exercice Assigné  
+- Exercice 1: Suppression des Occurrences dans une Liste Chaînée
+
+But  
+Supprimer toutes les occurrences d’une valeur donnée dans une liste chaînée simplement chaînée.
+
+Principe  
+Parcourir la liste et supprimer chaque nœud dont la valeur correspond à celle donnée en entrée, en mettant correctement à jour les pointeurs.
+
+Entrées  
+- Une liste chaînée de nœuds contenant des entiers  
+- La valeur à supprimer
+
+Sortie  
+- La liste modifiée sans /les occurrence(s) de la valeur cible
+
+
+Description de Ma Participation
+
+J'ai développé l’algorithme de suppression dans une liste chaînée, en langage C, en gérant tous les cas possibles (début, milieu et fin de liste).
+
+Détails Techniques
+
+Algorithme implémenté :
+
+```c
+// Suppression des occurrences d'une valeur dans une liste chaînée
+Node* supprimer_occurrences(Node* head, int val) {
+    // Suppression en tête
+[02/10 11:22] CHAT GPT: while (head != NULL && head->data == val) {
+        Node* temp = head;
+        head = head->next;
+        free(temp);
+    }
+    // Suppression dans le reste de la liste
+    Node* curr = head;
+    while (curr != NULL && curr->next != NULL) {
+        if (curr->next->data == val) {
+            Node* temp = curr->next;
+            curr->next = curr->next->next;
+            free(temp);
+        } else {
+            curr = curr->next;
+        }
+    }
+    return head;
+}
+
+
+Fonctions développées :
+- supprimer_occurrences(): Supprime toutes les occurrences d’une valeur
+- Creer_liste() : Crée une liste chaînée
+- afficher_liste() : Affiche les éléments de la liste
+
+
+
+Compétences Utilisées
+
+- Langage C  
+- Manipulation de pointeurs et structures  
+- Liste chaînée  
+- Git/GitHub : suivi de versions et collaboration  
+
+
+Problème Rencontré
+
+Pendant le codage, j’ai rencontré un problème lié à la *gestion des pointeurs* lors de la suppression d’un nœud en tête de liste.  
+Lorsque plusieurs éléments à supprimer se trouvent en début de liste, il faut mettre à jour correctement le pointeur `head`. J’ai corrigé cela en ajoutant une boucle dédiée au début de la liste, suivie d’un traitement classique avec un pointeur `curr`.
